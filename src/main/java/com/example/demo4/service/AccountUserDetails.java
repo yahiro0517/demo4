@@ -3,6 +3,7 @@ package com.example.demo4.service;
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.demo4.data.entity.Users;
@@ -13,12 +14,13 @@ public class AccountUserDetails implements UserDetails {
 	public AccountUserDetails(Users user) {
 		this.user = user;
 	}
+	
 	// ユーザに与えられている権限リストを返却する
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		//return AuthorityUtils.createAuthorityList("ROLE_" + user.getRoleName());
-		return null;
+		return AuthorityUtils.createAuthorityList("ROLE_" + user.getRoleName());
 	}
+	
 	// パスワードを返却する
 	@Override
 	public String getPassword() {

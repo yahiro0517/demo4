@@ -10,5 +10,6 @@ public class AdminPageController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')") // 追記 ROLE_ADMINのユーザのみアクセスを許可
 	public String adminPage() {
 		return "adminPage";
+	
 	}
 }
